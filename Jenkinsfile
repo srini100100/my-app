@@ -15,13 +15,13 @@ node{
 	        }
 	    }
    stage('Build Docker Imager'){
-   sh 'docker build -t manojsb2409/myweb:0.0.2 .'
+   sh 'docker build -t srini102/myweb:0.0.2 .'
    }
    stage('Docker Image Push'){
    withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-   sh "docker login -u manojsb2409 -p ${dockerPassword}"
+   sh "docker login -u srini102 -p ${dockerPassword}"
     }
-   sh 'docker push manojsb2409/myweb:0.0.2'
+   sh 'docker push srini102/myweb:0.0.2'
    }
    stage('Nexus Image Push'){
    sh "docker login -u admin -p admin123 3.108.254.67:8083"
